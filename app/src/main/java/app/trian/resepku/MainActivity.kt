@@ -7,6 +7,7 @@ import app.trian.resepku.base.BaseMainApp
 import app.trian.resepku.base.extensions.listenRouteChanges
 import dagger.hilt.android.AndroidEntryPoint
 
+//sbshds
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
