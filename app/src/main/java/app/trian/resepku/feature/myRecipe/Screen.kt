@@ -5,6 +5,7 @@
 */
 package app.trian.resepku.feature.myRecipe
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,7 +15,9 @@ import app.trian.resepku.base.BaseMainApp
 internal fun ScreenMyRecipe(
     modifier: Modifier = Modifier,
 ) {
+Column {
 
+}
 }
 
 @Preview

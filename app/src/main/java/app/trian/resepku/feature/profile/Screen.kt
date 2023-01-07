@@ -5,6 +5,7 @@
 */
 package app.trian.resepku.feature.profile
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -14,6 +15,9 @@ import app.trian.resepku.base.BaseMainApp
 internal fun ScreenProfile(
     modifier: Modifier = Modifier,
 ) {
+    Column {
+
+    }
 
 }
 

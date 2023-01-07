@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import app.trian.resepku.base.BaseMainApp
 
 object HomeTopAppBar{
-    val appBarType = "HomeAppBar"
+    const val appBarType = "HomeAppBar"
 }
 @Composable
 fun HomeTopAppBar() {
