@@ -28,6 +28,7 @@ fun ApplicationState.listenRouteChanges() {
                 }
                 Notification.route -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)
+                    changeTopAppBar("")
                 }
                 Profile.route -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)

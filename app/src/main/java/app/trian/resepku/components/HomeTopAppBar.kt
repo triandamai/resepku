@@ -5,6 +5,7 @@
 */
 package app.trian.resepku.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
@@ -20,33 +21,34 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import app.trian.resepku.base.BaseMainApp
 
-object HomeTopAppBar{
+object HomeTopAppBar {
     const val appBarType = "HomeAppBar"
 }
+
 @Composable
 fun HomeTopAppBar() {
 
-    TopAppBar(
-        backgroundColor = MaterialTheme.colors.background,
-        elevation = 0.dp,
+    Column(
         modifier = Modifier.padding(
-            top = 8.dp
-        ),
-        title = {
-            OutlinedTextField(
-                value = "",
-                readOnly=true,
-                modifier = Modifier.fillMaxWidth(),
-                leadingIcon = {
-                    Icon(
-                        imageVector = Outlined.Search,
-                        contentDescription = ""
-                    )
-                }, placeholder = {
-                    Text(text = "Cari masakan enak")
-                }, onValueChange = {})
-        }
-    )
+            top = 8.dp,
+            start = 10.dp,
+            end = 10.dp,
+            bottom = 8.dp
+        )
+    ) {
+        OutlinedTextField(
+            value = "",
+            readOnly = true,
+            modifier = Modifier.fillMaxWidth(),
+            leadingIcon = {
+                Icon(
+                    imageVector = Outlined.Search,
+                    contentDescription = ""
+                )
+            }, placeholder = {
+                Text(text = "Cari masakan enak")
+            }, onValueChange = {})
+    }
 }
 
 @Preview
