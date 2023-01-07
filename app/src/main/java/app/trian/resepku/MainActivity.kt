@@ -1,3 +1,8 @@
+/*
+ * Copyright trian.app
+ * Author Trian Damai-triandamai@gmail.com
+ * Created at 07/01/23 22.45
+*/
 package app.trian.resepku
 
 import android.os.Bundle
@@ -18,7 +23,7 @@ class MainActivity : ComponentActivity() {
             BaseMainApp(
                 appState = state
             ){
-
+                AppNavigation(it)
             }
         }
     }

@@ -1,3 +1,8 @@
+/*
+ * Copyright trian.app
+ * Author Trian Damai-triandamai@gmail.com
+ * Created at 07/01/23 22.45
+*/
 package app.trian.resepku
 
 import androidx.compose.material.SnackbarHostState
@@ -19,6 +24,22 @@ class ApplicationState internal constructor(
     var currentRoute by mutableStateOf("")
 
     var snackbarHostState by mutableStateOf(SnackbarHostState())
+
+    fun changeBottomBar(type:String){
+        if(bottomAppBarType != type){
+            bottomAppBarType = type
+        }
+    }
+    fun changeTopAppBar(type:String){
+        if(topAppBarType != type){
+            topAppBarType = type
+        }
+    }
+    fun changeSnackbar(type:String){
+        if(snackBarType != type){
+            snackBarType = type
+        }
+    }
 }
 
 @Composable

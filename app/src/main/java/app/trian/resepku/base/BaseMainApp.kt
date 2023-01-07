@@ -1,3 +1,8 @@
+/*
+ * Copyright trian.app
+ * Author Trian Damai-triandamai@gmail.com
+ * Created at 07/01/23 22.43
+*/
 package app.trian.resepku.base
 
 import androidx.compose.foundation.layout.Column
@@ -18,20 +23,27 @@ import app.trian.resepku.ui.theme.ResepkuTheme
 @Composable
 fun BaseMainApp(
     appState: ApplicationState = rememberApplicationState(),
-    content: @Composable (appState: ApplicationState) -> Unit = {}
+    topAppBar: @Composable (ApplicationState) -> Unit = { BaseTopAppBar(it) },
+    bottomBar: @Composable (ApplicationState) -> Unit = { BaseBottomBar(it) },
+    snackbarBar: @Composable (ApplicationState) -> Unit = { BaseSnackbar(it) },
+    content: @Composable (appState: ApplicationState) -> Unit = { }
 ) {
     ResepkuTheme {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
         ) {
-            Scaffold(topBar = {
-                BaseTopAppBar(applicationState = appState)
-            }, bottomBar = {
-                BaseBottomBar(applicationState = appState)
-            }, snackbarHost = {
-                BaseSnackbar(applicationState = appState)
-            }) {
+            Scaffold(
+                topBar = {
+                    topAppBar(appState)
+                },
+                bottomBar = {
+                    bottomBar(appState)
+                },
+                snackbarHost = {
+                    snackbarBar(appState)
+                }
+            ) {
                 Column(
                     modifier = Modifier.padding(it)
                 ) {

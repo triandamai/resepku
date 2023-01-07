@@ -3,7 +3,7 @@
  * Author Trian Damai-triandamai@gmail.com
  * Created at 07/01/23 22.45
 */
-package app.trian.resepku.feature.signIn
+package app.trian.resepku.feature.signUp
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -31,15 +31,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import app.trian.filebox.R
+import app.trian.filebox.R.drawable
 import app.trian.resepku.base.BaseMainApp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun ScreenSignIn(
+internal fun ScreenSignUp(
     modifier: Modifier = Modifier,
-    onSignInBasic: (email: String, password: String) -> Unit,
-    onSignInGoogle: () -> Unit
+    onSignUpBasic: (name: String, email: String, password: String) -> Unit,
+    onSignUpGoogle: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -74,6 +74,10 @@ internal fun ScreenSignIn(
         ) {
 
             OutlinedTextField(value = "", modifier = Modifier.fillMaxWidth(), label = {
+                Text(text = "Name")
+            }, onValueChange = {})
+            Spacer(modifier = Modifier.height(16.dp))
+            OutlinedTextField(value = "", modifier = Modifier.fillMaxWidth(), label = {
                 Text(text = "Email")
             }, onValueChange = {})
             Spacer(modifier = Modifier.height(16.dp))
@@ -93,8 +97,8 @@ internal fun ScreenSignIn(
         ) {
             Button(modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(4.dp),
-                onClick = { onSignInBasic("", "") }) {
-                Text(text = "Login")
+                onClick = { onSignUpBasic("", "", "") }) {
+                Text(text = "Register")
             }
             Spacer(modifier = Modifier.height(12.dp))
             Text(
@@ -110,9 +114,9 @@ internal fun ScreenSignIn(
                     color = MaterialTheme.colorScheme.primary
                 ),
                 shape = RoundedCornerShape(4.dp),
-                onClick = { onSignInGoogle() }) {
+                onClick = { onSignUpGoogle() }) {
                 Image(
-                    painter = painterResource(id = R.drawable.icon_google),
+                    painter = painterResource(id = drawable.icon_google),
                     contentDescription = "Icon google",
                     modifier = Modifier.size(
                         30.dp
@@ -130,11 +134,12 @@ internal fun ScreenSignIn(
 
 @Preview
 @Composable
-fun PreviewScreenSignIn() {
+fun PreviewScreenSignUp() {
     BaseMainApp {
-        ScreenSignIn(
-            onSignInBasic = { _, _ -> },
-            onSignInGoogle = {}
+        ScreenSignUp(
+            onSignUpBasic = { _, _, _ ->
+            },
+            onSignUpGoogle = {}
         )
     }
 
