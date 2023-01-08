@@ -75,6 +75,7 @@ dependencies {
     with(Deps.Com.Google.Accompanist) {
         implementation(pager)
         implementation(pagerIndicator)
+        implementation(flowLayout)
     }
     implementation(Deps.AndroidX.Compose.composeRuntimeLiveData)
     with(Deps.Com.Google.Dagger) {

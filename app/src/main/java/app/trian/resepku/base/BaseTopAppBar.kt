@@ -8,6 +8,7 @@ package app.trian.resepku.base
 import androidx.compose.runtime.Composable
 import app.trian.resepku.ApplicationState
 import app.trian.resepku.components.HomeTopAppBar
+import app.trian.resepku.components.SearchRecipeTopAppBar
 
 @Composable
 fun BaseTopAppBar(
@@ -17,6 +18,9 @@ fun BaseTopAppBar(
         when (topAppBarType) {
             HomeTopAppBar.appBarType -> {
                 HomeTopAppBar()
+            }
+            SearchRecipeTopAppBar.topAppBarType -> {
+                SearchRecipeTopAppBar()
             }
             else -> {}
         }

@@ -7,11 +7,13 @@ package app.trian.resepku.base.extensions
 
 import app.trian.resepku.ApplicationState
 import app.trian.resepku.components.DashboardBottomNavigation
-import app.trian.resepku.components.DashboardBottomNavigationItem.Home
-import app.trian.resepku.components.DashboardBottomNavigationItem.MyRecipe
-import app.trian.resepku.components.DashboardBottomNavigationItem.Notification
-import app.trian.resepku.components.DashboardBottomNavigationItem.Profile
 import app.trian.resepku.components.HomeTopAppBar
+import app.trian.resepku.components.SearchRecipeTopAppBar
+import app.trian.resepku.feature.home.Home
+import app.trian.resepku.feature.myRecipe.MyRecipe
+import app.trian.resepku.feature.notification.Notification
+import app.trian.resepku.feature.profile.Profile
+import app.trian.resepku.feature.searchRecipe.SearchRecipe
 
 //listen for route changes and re config layout
 fun ApplicationState.listenRouteChanges() {
@@ -19,19 +21,23 @@ fun ApplicationState.listenRouteChanges() {
         router.addOnDestinationChangedListener { _, destination, _ ->
             currentRoute = destination.route.orEmpty()
             when (currentRoute) {
-                Home.route -> {
+                Home.routeName -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)
                     changeTopAppBar(HomeTopAppBar.appBarType)
                 }
-                MyRecipe.route -> {
+                MyRecipe.routeName -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)
                 }
-                Notification.route -> {
+                Notification.routeName -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)
                     changeTopAppBar("")
                 }
-                Profile.route -> {
+                Profile.routeName -> {
                     changeBottomBar(DashboardBottomNavigation.bottomBarType)
+                }
+                SearchRecipe.routeName->{
+                    changeBottomBar("")
+                    changeTopAppBar(SearchRecipeTopAppBar.topAppBarType)
                 }
                 else -> {
                     if (bottomAppBarType.isNotBlank()) {
