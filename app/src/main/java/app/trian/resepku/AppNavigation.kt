@@ -13,7 +13,6 @@ import app.trian.resepku.feature.home.routeHome
 import app.trian.resepku.feature.myRecipe.routeMyRecipe
 import app.trian.resepku.feature.notification.routeNotification
 import app.trian.resepku.feature.profile.routeProfile
-import app.trian.resepku.feature.searchRecipe.SearchRecipe
 import app.trian.resepku.feature.searchRecipe.routeSearchRecipe
 import app.trian.resepku.feature.signIn.routeSignIn
 import app.trian.resepku.feature.signUp.routeSignUp
