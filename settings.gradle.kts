@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            from(files("libs.versions.toml"))
+            from(files("core-ui/libs.versions.toml"))
         }
     }
 }
