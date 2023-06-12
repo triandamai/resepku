@@ -10,7 +10,6 @@ import androidx.navigation.NavGraphBuilder
 import app.trian.core.ui.UIController
 import app.trian.core.ui.UIListenerData
 import app.trian.core.ui.pageWrapper
-import app.trian.core.ui.routes.Routes.CreateRecipe
 import app.trian.resepku.feature.recipe.createRecipe.CreateRecipeViewModel
 import app.trian.resepku.feature.recipe.createRecipe.ScreenCreateRecipe
 
