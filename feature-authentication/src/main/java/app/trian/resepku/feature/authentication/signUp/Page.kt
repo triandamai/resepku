@@ -41,6 +41,7 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.CheckBoxWithAction
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
+import app.trian.core.ui.extensions.navigateAndReplaceAll
 import app.trian.core.ui.routes.Routes
 
 
@@ -94,7 +95,7 @@ fun ScreenSignUp(
                     labels = signInText,
                     onTextClick = {
                         if (it == 1) {
-                            navigateAndReplaceAll(Routes.SignIn.routeName)
+                            router.navigateAndReplaceAll(Routes.SignIn.routeName)
                         }
                     }
                 )

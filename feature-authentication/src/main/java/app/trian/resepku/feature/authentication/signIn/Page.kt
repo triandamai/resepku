@@ -39,6 +39,7 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSocial
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
+import app.trian.core.ui.extensions.navigateSingleTop
 import app.trian.core.ui.routes.Routes
 
 
@@ -151,7 +152,7 @@ fun ScreenSignIn(
                     labels = forgetPasswordText,
                     onTextClick = {
                         if (it == 1) {
-                            navigateSingleTop(Routes.ResetPassword.routeName)
+                            router.navigateSingleTop(Routes.ResetPassword.routeName)
                         }
                     }
                 )
@@ -174,7 +175,7 @@ fun ScreenSignIn(
                             labels = signUp,
                             onTextClick = {
                                 if (it == 1) {
-                                    navigateSingleTop(Routes.SignUp.routeName)
+                                    router.navigateSingleTop(Routes.SignUp.routeName)
                                 }
                             }
                         )

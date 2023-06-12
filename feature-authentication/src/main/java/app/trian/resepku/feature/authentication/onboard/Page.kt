@@ -33,6 +33,8 @@ import app.trian.core.ui.component.AnnotationTextItem
 import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSecondary
 import app.trian.core.ui.component.TextWithAction
+import app.trian.core.ui.extensions.navigateAndReplaceAll
+import app.trian.core.ui.extensions.navigateSingleTop
 import app.trian.core.ui.routes.Routes
 
 
@@ -107,7 +109,7 @@ fun ScreenOnboard(
                         ),
                     fullWidth = false
                 ) {
-                    navigateAndReplaceAll(Routes.SignIn.routeName)
+                    router.navigateAndReplaceAll(Routes.SignIn.routeName)
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 ButtonSecondary(
@@ -118,7 +120,7 @@ fun ScreenOnboard(
                         ),
                     fullWidth = false
                 ) {
-                    navigateSingleTop(Routes.SignUp.routeName)
+                    router.navigateSingleTop(Routes.SignUp.routeName)
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
