@@ -43,6 +43,7 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSecondary
 import app.trian.core.ui.component.HeaderStepWithProgress
 import app.trian.core.ui.extensions.coloredShadow
+import app.trian.core.ui.extensions.navigateUp
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenInputIngredient
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenInputStep
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenMain
@@ -179,7 +180,7 @@ internal fun ScreenCreateRecipe(
                     )
 
                     3 -> ScreenSuccessCreateRecipe(
-                        onClose = { navigateUp() },
+                        onClose = { router.navigateUp() },
                         onEdit = {}
                     )
                     else -> Unit
