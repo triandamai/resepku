@@ -11,6 +11,7 @@ import app.trian.core.ui.extensions.addOnEventListener
 import app.trian.core.ui.listener.ScreenToAppEvent
 import app.trian.core.ui.rememberUIController
 import app.trian.core.ui.routes.AuthenticationConstants
+import app.trian.core.ui.routes.Routes
 import app.trian.resepku.feature.authentication.authenticationRoute
 import app.trian.resepku.feature.dashboard.dashboardRoute
 import app.trian.resepku.feature.recipe.recipeRoute
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 NavHost(
                     navController = it.router,
-                    startDestination = AuthenticationConstants.parentRoute
+                    startDestination = Routes.Home.routeName//AuthenticationConstants.parentRoute
                 ) {
                     authenticationRoute(uiController = it)
                     dashboardRoute(uiController = it)
