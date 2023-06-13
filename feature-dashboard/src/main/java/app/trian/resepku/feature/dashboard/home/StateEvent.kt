@@ -5,13 +5,16 @@
 package app.trian.resepku.feature.dashboard.home
 
 import android.os.Parcelable
+import app.trian.resepku.feature.dashboard.home.component.DashboardBottomNavigationMenu
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 import javax.annotation.concurrent.Immutable
 
 @Immutable
 @Parcelize
 data class HomeState(
-    val percentage:Float=01f
+    val percentage:Float=01f,
+    val currentPage:Int=0,
 ) : Parcelable
 
 @Immutable

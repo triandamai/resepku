@@ -51,6 +51,7 @@ import app.trian.resepku.feature.dashboard.home.HomeState
 fun HomeScreen(
     state: HomeState = HomeState(),
     data: HomeDataState = HomeDataState(),
+    onItemRecipeClick: () -> Unit = {}
 ) {
     LazyColumn(
         content = {
@@ -230,7 +231,7 @@ fun HomeScreen(
                             Row(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                TextButton(onClick = { /*TODO*/ }) {
+                                TextButton(onClick = onItemRecipeClick) {
                                     Text(
                                         text = "Selengkapnya",
                                         style = MaterialTheme.typography.bodyMedium,
