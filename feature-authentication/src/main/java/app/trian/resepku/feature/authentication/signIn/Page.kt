@@ -39,7 +39,9 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSocial
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
+import app.trian.core.ui.extensions.navigate
 import app.trian.core.ui.extensions.navigateSingleTop
+import app.trian.core.ui.routes.Routes
 
 
 @Composable
@@ -143,8 +145,9 @@ fun ScreenSignIn(
                 )
                 Spacer(modifier = Modifier.height(30.dp))
                 ButtonPrimary(text = stringResource(id = string.btn_signin)) {
-                    hideKeyboard()
-                    dispatch(SignInEvent.SignInWithEmail)
+                    // hideKeyboard()
+                    //dispatch(SignInEvent.SignInWithEmail)
+                    router.navigate(Routes.Home.routeName)
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 TextWithAction(

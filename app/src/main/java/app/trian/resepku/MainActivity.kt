@@ -10,6 +10,7 @@ import app.trian.core.ui.UIController
 import app.trian.core.ui.extensions.addOnEventListener
 import app.trian.core.ui.listener.ScreenToAppEvent
 import app.trian.core.ui.rememberUIController
+import app.trian.core.ui.routes.AuthenticationConstants
 import app.trian.resepku.feature.authentication.authenticationRoute
 import app.trian.resepku.feature.dashboard.dashboardRoute
 import app.trian.resepku.feature.recipe.recipeRoute

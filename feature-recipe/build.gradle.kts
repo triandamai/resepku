@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.wheel.picker.compose)
     implementation(libs.coil.compose)
     implementation(libs.navigation.compose)
+    implementation(libs.compose.constraint)
 
     implementation(libs.reorder.list)
 

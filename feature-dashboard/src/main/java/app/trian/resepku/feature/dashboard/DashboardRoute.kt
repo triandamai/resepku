@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphBuilder
 import app.trian.core.ui.UIController
 import app.trian.core.ui.UIListenerData
 import app.trian.core.ui.pageWrapper
+import app.trian.core.ui.routes.Routes.Home
 import app.trian.resepku.feature.dashboard.home.HomeViewModel
 import app.trian.resepku.feature.dashboard.home.ScreenHome
 
@@ -19,7 +20,7 @@ fun NavGraphBuilder.dashboardRoute(
 ) {
 
     pageWrapper<HomeViewModel>(
-        route = Splash.routeName,
+        route = Home.routeName,
         controller = uiController
     ) {
         val state by uiState.collectAsState()
