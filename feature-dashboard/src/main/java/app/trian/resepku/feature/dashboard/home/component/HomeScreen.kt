@@ -180,14 +180,14 @@ fun HomeScreen(
                                             style = MaterialTheme.typography.bodySmall,
                                             fontWeight = FontWeight.SemiBold,
                                             maxLines = 1,
-                                            color = MaterialTheme.colorScheme.surface
+                                            color = Color.White
                                         )
                                         Text(
                                             text = "20 Menit lalu",
                                             style = MaterialTheme.typography.bodySmall,
                                             fontWeight = FontWeight.Normal,
                                             maxLines = 1,
-                                            color = MaterialTheme.colorScheme.surface
+                                            color = Color.White
                                         )
                                     }
 

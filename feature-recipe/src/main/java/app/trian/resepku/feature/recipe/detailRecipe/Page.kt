@@ -29,15 +29,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -50,6 +54,11 @@ import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.UIListenerData
 import app.trian.core.ui.UiWrapperData
 import app.trian.core.ui.component.R
+import app.trian.core.ui.extensions.coloredShadow
+import app.trian.core.ui.extensions.getScreenHeight
+import app.trian.core.ui.extensions.toPixel
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import java.lang.Float.min
 
 @Composable
@@ -57,34 +66,65 @@ fun ScreenDetailRecipe(
     uiEvent: UIListenerData<DetailRecipeState, DetailRecipeDataState, DetailRecipeEvent>
 ) = UiWrapperData(uiEvent) {
     val view = LocalView.current
+    val context = LocalContext.current
     (view.context as? Activity)?.window?.let {
         WindowCompat.setDecorFitsSystemWindows(it, true)
     }
     val scrollState = rememberScrollState()
+    val imageHeight = (context.getScreenHeight() / 3) + 40.dp
+    val maxScrolling = (imageHeight - 45.dp).toPixel(context = context).toInt()
+    val maxForceScrollDown = maxScrolling / 3
     val alpha by remember {
         derivedStateOf { min(1f, 1 - (scrollState.value / 600f)) }
     }
     val translateY by remember {
         derivedStateOf { -scrollState.value * 0.1f }
     }
+    LaunchedEffect(key1 = scrollState, block = {
+        snapshotFlow {
+            scrollState.isScrollInProgress
+        }.collect {
+            if (!it) {
+                when (scrollState.value) {
+                    in maxForceScrollDown..maxScrolling -> {
+                        //up
+                        scrollState.animateScrollTo(maxScrolling)
+                    }
 
-//    val image =
-//        rememberAsyncImagePainter(
-//            model = ImageRequest
-//                .Builder(LocalContext.current)
-//                .data("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=600,545")
-//                .crossfade(true)
-//                .build()
-//        )
+                    in 0..maxForceScrollDown -> {
+                        //down
+                        scrollState.animateScrollTo(0)
+                    }
+                }
+            }
+        }
+
+    })
+
+    val image =
+        rememberAsyncImagePainter(
+            model = ImageRequest
+                .Builder(LocalContext.current)
+                .data("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&webp=true&resize=600,545")
+                .crossfade(true)
+                .error(R.drawable.bg_placeholder_recipe)
+                .placeholder(R.drawable.bg_placeholder_recipe_loading)
+                .build(),
+            contentScale = ContentScale.FillBounds,
+            onSuccess = {},
+            onError = {},
+            onLoading = {},
+            filterQuality = FilterQuality.Medium
+        )
     BaseScreen {
         Box {
             ConstraintLayout {
                 Image(
-                    painter = painterResource(id = app.trian.core.ui.component.R.drawable.dummy_recipe),
+                    painter = image,
                     contentDescription = "",
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(350.dp)
+                        .height(imageHeight)
                         .graphicsLayer {
                             this.alpha = alpha
                             this.translationY = translateY
@@ -95,10 +135,13 @@ fun ScreenDetailRecipe(
             Column(
                 modifier = Modifier.verticalScroll(scrollState)
             ) {
-                Box(modifier = Modifier.height(300.dp))
+                Box(modifier = Modifier.height(imageHeight - 40.dp))
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .coloredShadow(
+                            color = MaterialTheme.colorScheme.primary
+                        )
                         .clip(
                             RoundedCornerShape(
                                 topStart = 12.dp,
@@ -113,10 +156,12 @@ fun ScreenDetailRecipe(
                     Box(
                         modifier = Modifier
                             .width(50.dp)
-                            .height(8.dp)
+                            .height(6.dp)
                             .clip(MaterialTheme.shapes.extraLarge)
                             .background(
-                                Color.LightGray
+                                Color.LightGray.copy(
+                                    alpha = if (alpha <= 0f) 0f else alpha
+                                )
                             )
                     )
                     Spacer(modifier = Modifier.height(16.dp))
@@ -293,8 +338,8 @@ fun ScreenDetailRecipe(
                                     Column {
                                         Text(
                                             text = "Your recipe has been uploaded, you can see it on your profile. Your recipe has been uploaded, you can see it on your",
-                                            style = MaterialTheme.typography.bodySmall,
-                                            fontWeight = FontWeight.SemiBold
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            fontWeight = FontWeight.Normal
                                         )
                                         Spacer(modifier = Modifier.height(8.dp))
                                         Image(
@@ -306,7 +351,7 @@ fun ScreenDetailRecipe(
                                                     150.dp
                                                 )
                                                 .clip(MaterialTheme.shapes.extraLarge),
-                                            contentScale = ContentScale.FillBounds
+                                            contentScale = ContentScale.FillWidth
                                         )
                                     }
                                 }

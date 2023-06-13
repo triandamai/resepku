@@ -43,7 +43,6 @@ fun CheckBoxWithAction(
         labels.forEachIndexed { index, data ->
             when (data) {
                 is AnnotationTextItem.Button -> {
-                    append(" ")
                     pushStringAnnotation(
                         tag = "text_${index}",
                         annotation = "text_${index}"
@@ -55,11 +54,11 @@ fun CheckBoxWithAction(
                     ) {
                         append(data.text)
                     }
+                    append(" ")
                     pop()
                 }
 
                 is AnnotationTextItem.Text -> {
-                    append(" ")
                     withStyle(
                         style = SpanStyle(
                             color = MaterialTheme.colorScheme.onBackground,
@@ -67,6 +66,7 @@ fun CheckBoxWithAction(
                     ) {
                         append(data.text)
                     }
+                    append(" ")
                 }
             }
         }
@@ -125,7 +125,6 @@ fun TextWithAction(
         labels.forEachIndexed { index, data ->
             when (data) {
                 is AnnotationTextItem.Button -> {
-                    append(" ")
                     pushStringAnnotation(
                         tag = "text_${index}",
                         annotation = "text_${index}"
@@ -137,6 +136,7 @@ fun TextWithAction(
                     ) {
                         append(data.text)
                     }
+                    append(" ")
                     pop()
                 }
 
@@ -149,6 +149,7 @@ fun TextWithAction(
                     ) {
                         append(data.text)
                     }
+                    append(" ")
                 }
             }
         }
