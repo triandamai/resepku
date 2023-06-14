@@ -9,6 +9,7 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    //should place at bottom plugin because hilt warning idk why :(
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
