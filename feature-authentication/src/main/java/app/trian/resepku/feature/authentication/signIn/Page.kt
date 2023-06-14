@@ -31,23 +31,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
+import app.trian.core.ui.R.string
 import app.trian.core.ui.UIListener
 import app.trian.core.ui.UIWrapper
 import app.trian.core.ui.component.AnnotationTextItem
-import app.trian.core.ui.rememberUIController
-import app.trian.core.ui.R.string
 import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSocial
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
-import app.trian.core.ui.extensions.navigate
-import app.trian.core.ui.extensions.navigateSingleTop
+import app.trian.core.ui.listener.EventListener
+import app.trian.core.ui.rememberUIController
 import app.trian.core.ui.routes.Routes
 
 
 @Composable
 fun ScreenSignIn(
-    uiEvent: UIListener<SignInState, SignInEvent>
+    uiEvent: UIListener<SignInState, SignInEvent,EventListener>
 ) = UIWrapper(
     uiEvent = uiEvent
 ) {

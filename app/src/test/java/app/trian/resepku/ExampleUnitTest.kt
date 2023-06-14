@@ -11,7 +11,6 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.printToLog
 import app.trian.core.ui.UIListener
-import app.trian.core.ui.UIListenerData
 import app.trian.core.ui.rememberUIController
 import app.trian.resepku.feature.authentication.signIn.ScreenSignIn
 import app.trian.resepku.feature.authentication.signIn.SignInEvent
