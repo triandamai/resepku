@@ -22,6 +22,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -91,7 +92,8 @@ fun ScreenSignIn(
                         fontSize = 22.sp,
                         fontWeight = FontWeight.SemiBold,
                     ),
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.testTag("title_signin")
                 )
                 Text(
                     text = stringResource(string.subtitle_signin),
