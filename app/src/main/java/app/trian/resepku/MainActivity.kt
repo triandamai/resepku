@@ -7,14 +7,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.NavHost
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.UIController
-import app.trian.core.ui.extensions.addOnEventListener
-import app.trian.core.ui.listener.ScreenToAppEvent
 import app.trian.core.ui.rememberUIController
-import app.trian.core.ui.routes.AuthenticationConstants
-//import app.trian.core.ui.routes.Routes
-import app.trian.resepku.feature.authentication.authenticationRoute
-import app.trian.resepku.feature.dashboard.dashboardRoute
-import app.trian.resepku.feature.recipe.recipeRoute
+import app.trian.core.ui.routes.Routes
+import app.trian.ksp.authenticationComponent
+import app.trian.ksp.dashboardComponent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,9 +21,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             uiController = rememberUIController()
             LaunchedEffect(key1 = uiController, block = {
-                uiController.addOnEventListener { event ->
+                uiController.addOnEventListener { event, params ->
                     when (event) {
-                        ScreenToAppEvent.EXIT_APP -> finish()
+                        "EXIT" -> finish()
                     }
                 }
             })
@@ -36,11 +32,11 @@ class MainActivity : ComponentActivity() {
             ) {
                 NavHost(
                     navController = it.router,
-                    startDestination = AuthenticationConstants.parentRoute
+                    startDestination = Routes.Splash.routeName
                 ) {
-                    authenticationRoute(uiController = it)
-                    dashboardRoute(uiController = it)
-                    recipeRoute(uiController = it)
+                    authenticationComponent(it)
+                    dashboardComponent(it)
+                    authenticationComponent(it)
                 }
             }
         }

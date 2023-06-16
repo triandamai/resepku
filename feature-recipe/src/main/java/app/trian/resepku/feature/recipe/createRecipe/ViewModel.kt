@@ -9,8 +9,6 @@ import app.trian.core.ui.extensions.Empty
 import app.trian.core.ui.extensions.add
 import app.trian.core.ui.extensions.createUUID
 import app.trian.core.ui.extensions.findIndex
-import app.trian.core.ui.extensions.navigateUp
-import app.trian.core.ui.extensions.showBottomSheet
 import app.trian.core.ui.viewModel.BaseViewModelData
 import app.trian.resepku.data.model.CookingStep
 import app.trian.resepku.data.model.Ingredient

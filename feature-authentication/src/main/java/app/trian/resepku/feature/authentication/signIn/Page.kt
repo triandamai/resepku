@@ -29,6 +29,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.R.string
@@ -39,14 +40,16 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSocial
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
-import app.trian.core.ui.listener.EventListener
 import app.trian.core.ui.rememberUIController
 import app.trian.core.ui.routes.Routes
 
-
+@Navigation(
+    route = Routes.SignIn.routeName,
+    viewModel = SignInViewModel::class
+)
 @Composable
 fun ScreenSignIn(
-    uiEvent: UIListener<SignInState, SignInEvent,EventListener>
+    uiEvent: UIListener<SignInState, SignInEvent>
 ) = UIWrapper(
     uiEvent = uiEvent
 ) {

@@ -24,20 +24,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.UIListener
 import app.trian.core.ui.UIWrapper
-import com.google.accompanist.pager.rememberPagerState
-import app.trian.core.ui.component.R
 import app.trian.core.ui.component.AnnotationTextItem
 import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSecondary
+import app.trian.core.ui.component.R
 import app.trian.core.ui.component.TextWithAction
-import app.trian.core.ui.extensions.navigateAndReplaceAll
-import app.trian.core.ui.extensions.navigateSingleTop
 import app.trian.core.ui.routes.Routes
+import com.google.accompanist.pager.rememberPagerState
 
 
+@Navigation(
+    route = Routes.Onboard.routeName,
+    viewModel = OnboardViewModel::class
+)
 @Composable
 fun ScreenOnboard(
     uiEvent: UIListener<OnboardState, OnboardEvent>

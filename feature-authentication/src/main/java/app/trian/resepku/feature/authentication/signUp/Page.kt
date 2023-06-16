@@ -31,6 +31,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.R.string
@@ -41,15 +42,18 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.CheckBoxWithAction
 import app.trian.core.ui.component.FormInput
 import app.trian.core.ui.component.TextWithAction
-import app.trian.core.ui.extensions.navigateAndReplaceAll
 import app.trian.core.ui.routes.Routes
 
 
+@Navigation(
+    route = Routes.SignUp.routeName,
+    viewModel = SignUpViewModel::class
+)
 @Composable
 fun ScreenSignUp(
     uiEvent: UIListener<SignUpState, SignUpEvent>
 ) = UIWrapper(
-    uiEvent = uiEvent
+    uiEvent
 ) {
     val privacyPolicy = listOf(
         AnnotationTextItem.Text(stringResource(id = string.text_license_agreement)),

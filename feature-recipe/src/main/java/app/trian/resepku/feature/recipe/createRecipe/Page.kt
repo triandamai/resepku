@@ -35,6 +35,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.UIListenerData
@@ -43,15 +44,19 @@ import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.ButtonSecondary
 import app.trian.core.ui.component.HeaderStepWithProgress
 import app.trian.core.ui.extensions.coloredShadow
-import app.trian.core.ui.extensions.navigateUp
+import app.trian.core.ui.routes.Routes
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenInputIngredient
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenInputStep
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenMain
 import app.trian.resepku.feature.recipe.createRecipe.components.ScreenSuccessCreateRecipe
 
 @OptIn(ExperimentalAnimationApi::class)
+@Navigation(
+    route = Routes.CreateRecipe.routeName,
+    viewModel = CreateRecipeViewModel::class
+)
 @Composable
-internal fun ScreenCreateRecipe(
+fun ScreenCreateRecipe(
     uiEvent: UIListenerData<CreateRecipeState, CreateRecipeDataState, CreateRecipeEvent>
 ) = UIWrapper(uiEvent) {
 
@@ -183,6 +188,7 @@ internal fun ScreenCreateRecipe(
                         onClose = { router.navigateUp() },
                         onEdit = {}
                     )
+
                     else -> Unit
                 }
             }

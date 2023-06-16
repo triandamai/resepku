@@ -18,9 +18,7 @@ class DetailRecipeViewModel @Inject constructor(
     DetailRecipeState(),
     DetailRecipeDataState()
 ) {
-    init {
-        handleActions()
-    }
+    init { handleActions() }
 
     override fun handleActions() = onEvent {}
 

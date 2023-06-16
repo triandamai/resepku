@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.R
@@ -29,7 +30,12 @@ import app.trian.core.ui.UIListener
 import app.trian.core.ui.UIWrapper
 import app.trian.core.ui.component.ButtonPrimary
 import app.trian.core.ui.component.FormInput
+import app.trian.core.ui.routes.Routes
 
+@Navigation(
+    route = Routes.ChangePassword.routeName,
+    viewModel = ChangePasswordViewModel::class
+)
 @Composable
 fun ScreenChangePassword(
     uiEvent: UIListener<ChangePasswordState, ChangePasswordEvent>
@@ -48,9 +54,7 @@ fun ScreenChangePassword(
                 }
             )
         },
-        bottomBar = {
-
-        }
+        bottomBar = {}
     ) {
 
         Column(

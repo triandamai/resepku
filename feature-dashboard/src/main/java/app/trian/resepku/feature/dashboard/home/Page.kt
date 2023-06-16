@@ -10,20 +10,24 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.UIListenerData
-import app.trian.core.ui.UiWrapperData
-import app.trian.core.ui.extensions.navigate
+import app.trian.core.ui.UIWrapper
 import app.trian.core.ui.routes.Routes
 import app.trian.resepku.feature.dashboard.home.component.DashboardBottomNavigation
 import app.trian.resepku.feature.dashboard.home.component.HomeScreen
 
 
+@Navigation(
+    route = Routes.Home.routeName,
+    viewModel = HomeViewModel::class
+)
 @Composable
 fun ScreenHome(
     uiEvent: UIListenerData<HomeState, HomeDataState, HomeEvent>
-) = UiWrapperData(uiEvent = uiEvent) {
+) = UIWrapper(uiEvent = uiEvent) {
 
     BaseScreen(
         bottomBar = {

@@ -1,4 +1,7 @@
 @file:Suppress("UnstableApiUsage")
+
+
+
 pluginManagement {
     repositories {
         google()
@@ -28,6 +31,7 @@ rootProject.name = "Resepku"
 include(":app")
 include(":core-data")
 include(":core-ui")
+include(":core-annotation")
 include(":core-component")
 include(":feature-authentication")
 include(":feature-dashboard")

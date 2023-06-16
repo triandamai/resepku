@@ -4,7 +4,6 @@
 
 package app.trian.resepku.feature.recipe.detailRecipe
 
-import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -42,43 +41,44 @@ import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.core.view.WindowCompat
+import app.trian.core.annotation.Navigation
 import app.trian.core.ui.BaseMainApp
 import app.trian.core.ui.BaseScreen
 import app.trian.core.ui.UIListenerData
-import app.trian.core.ui.UiWrapperData
+import app.trian.core.ui.UIWrapper
 import app.trian.core.ui.component.R
 import app.trian.core.ui.extensions.coloredShadow
 import app.trian.core.ui.extensions.getScreenHeight
 import app.trian.core.ui.extensions.toPixel
+import app.trian.core.ui.routes.Routes
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import java.lang.Float.min
 
+@Navigation(
+    route = Routes.DetailRecipe.routeName,
+    viewModel = DetailRecipeViewModel::class
+)
 @Composable
 fun ScreenDetailRecipe(
     uiEvent: UIListenerData<DetailRecipeState, DetailRecipeDataState, DetailRecipeEvent>
-) = UiWrapperData(uiEvent) {
-    val view = LocalView.current
+) = UIWrapper(uiEvent) {
     val context = LocalContext.current
-    (view.context as? Activity)?.window?.let {
-        WindowCompat.setDecorFitsSystemWindows(it, true)
-    }
     val scrollState = rememberScrollState()
+    
     val imageHeight = (context.getScreenHeight() / 3) + 40.dp
     val maxScrolling = (imageHeight - 45.dp).toPixel(context = context).toInt()
     val maxForceScrollDown = maxScrolling / 3
     val alpha by remember {
-        derivedStateOf { min(1f, 1 - (scrollState.value / 600f)) }
+        derivedStateOf{min(1f, 1 - (scrollState.value / 600f))}
     }
     val translateY by remember {
-        derivedStateOf { -scrollState.value * 0.1f }
+        derivedStateOf{-scrollState.value * 0.1f }
     }
     LaunchedEffect(key1 = scrollState, block = {
         snapshotFlow {

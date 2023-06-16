@@ -10,8 +10,9 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    id("com.google.devtools.ksp") version "1.8.0-1.0.9"
     id("kotlin-parcelize")
+    alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
 android {
@@ -57,6 +58,8 @@ android {
 
 dependencies {
     api(project(":core-ui"))
+    api(project(":core-annotation"))
+    ksp(project(":core-annotation"))
     api(project(":core-component"))
 
 
