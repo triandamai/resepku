@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.app.cash.sqldelight)
     alias(libs.plugins.io.gitlab.arthubosch.detekt)
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp") version "1.8.0-1.0.9"
     //should place at bottom plugin because hilt warning idk why :(
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
@@ -95,8 +94,6 @@ android {
 dependencies {
     api(project(":core-data"))
     implementation(project(":core-ui"))
-    implementation(project(":core-annotation"))
-    ksp(project(":core-annotation"))
     api(project(":core-component"))
     api(project(":feature-authentication"))
     api(project(":feature-dashboard"))

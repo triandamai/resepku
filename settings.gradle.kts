@@ -36,3 +36,6 @@ include(":core-component")
 include(":feature-authentication")
 include(":feature-dashboard")
 include(":feature-recipe")
+
+project(":core-ui").projectDir = File("core-ui/ui")
+project(":core-annotation").projectDir = File("core-ui/annotation")

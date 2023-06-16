@@ -10,8 +10,8 @@
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
+    alias(libs.plugins.ksp)
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp") version "1.8.0-1.0.9"
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
 }
 
